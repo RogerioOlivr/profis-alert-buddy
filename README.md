@@ -221,6 +221,111 @@ A arquitetura adotada permite separar responsabilidades entre interface, dados e
 
 O uso de ferramentas modernas e automação contribui para criar um fluxo eficiente de monitoramento de contratos, reduzindo a necessidade de controle manual e melhorando a gestão de informações contratuais.
 
+# 16. Prompts Utilizados no Desenvolvimento
+
+Durante o desenvolvimento da aplicação foram utilizados prompts para orientar ferramentas de IA na geração de código, estrutura da aplicação e ajustes de regras de negócio.
+
+O uso de prompts permitiu acelerar o desenvolvimento inicial da solução, mantendo controle manual sobre as decisões de arquitetura, lógica e validações.
+
+A seguir estão os principais prompts utilizados.
+
+---
+
+## Prompt para criação da aplicação
+
+Este prompt foi utilizado para gerar a estrutura inicial da aplicação web responsável pelo cadastro e listagem de profissionais.
+
+Criar uma aplicação web simples para cadastro de profissionais de uma empresa.
+
+A aplicação deve conter:
+
+Tela de cadastro de profissional com os seguintes campos:
+
+* Nome completo
+* Email
+* Cargo
+* Data de início do contrato
+* Data de vencimento do contrato
+* Email do responsável
+
+Tela de listagem de profissionais contendo:
+
+* Nome
+* Cargo
+* Data de início
+* Data de vencimento do contrato
+* Email do responsável
+
+A listagem deve permitir filtro por nome e visualização de contratos próximos do vencimento.
+
+A aplicação deve permitir adicionar, editar e excluir profissionais.
+
+Os dados devem ser armazenados em uma tabela chamada profissionais.
+
+A aplicação também deve disponibilizar um endpoint de API para que automações externas possam consultar os profissionais cadastrados.
+
+---
+
+## Prompt para melhoria da interface
+
+Este prompt foi utilizado para melhorar a experiência visual da aplicação.
+
+Melhorar a interface da aplicação com uma tabela organizada para visualização dos profissionais cadastrados.
+
+Adicionar campo de busca para localizar profissionais pelo nome.
+
+Destacar visualmente contratos que estejam próximos do vencimento utilizando cores ou indicadores visuais.
+
+Garantir que a interface seja responsiva e organizada para facilitar a leitura dos dados.
+
+---
+
+## Prompt para criação do endpoint de API
+
+Este prompt foi utilizado para permitir a integração da aplicação com ferramentas de automação.
+
+Adicionar um endpoint de API que permita consultar os profissionais cadastrados.
+
+O endpoint deve retornar os seguintes dados:
+
+nome completo
+cargo
+data de início do contrato
+data de vencimento do contrato
+email do responsável
+
+A API também deve permitir filtrar profissionais com contratos próximos do vencimento utilizando um parâmetro de consulta que receba a quantidade de dias até o vencimento.
+
+---
+
+## Prompt para validações de regras de negócio
+
+Durante os testes foi identificado um cenário onde a data de vencimento do contrato poderia ser anterior à data de início, o que geraria inconsistência nos dados.
+
+Foi utilizado o seguinte prompt para implementar validações adicionais.
+
+Adicionar validações no cadastro de profissionais para evitar inconsistência nas datas do contrato.
+
+A data de vencimento do contrato não pode ser anterior à data de início.
+
+Caso isso ocorra, impedir o salvamento do registro e exibir uma mensagem de erro informando que a data de vencimento deve ser posterior à data de início.
+
+Também garantir validação de formato de e-mail e campos obrigatórios no formulário.
+
+---
+
+## Prompt para preparação da integração com automação
+
+Este prompt foi utilizado para estruturar os dados da API de forma que pudessem ser facilmente consumidos por ferramentas externas como n8n.
+
+Garantir que a API retorne os dados dos profissionais em formato JSON contendo os campos necessários para automação de monitoramento de contratos.
+
+A resposta deve incluir nome do profissional, cargo, data de vencimento do contrato e email do responsável.
+
+Essas informações serão utilizadas por um workflow externo para envio de alertas de vencimento de contrato.
+
+---
+
 
 ## Demonstração da Automação
 
