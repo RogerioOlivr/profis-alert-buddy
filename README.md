@@ -220,3 +220,16 @@ A solução desenvolvida atende aos requisitos do desafio ao fornecer um sistema
 A arquitetura adotada permite separar responsabilidades entre interface, dados e automação, facilitando manutenção e evolução futura da aplicação.
 
 O uso de ferramentas modernas e automação contribui para criar um fluxo eficiente de monitoramento de contratos, reduzindo a necessidade de controle manual e melhorando a gestão de informações contratuais.
+
+
+## Demonstração da Automação
+
+<img width="1387" height="588" alt="image" src="https://github.com/user-attachments/assets/0d1dc932-f30d-4e09-adbb-369af56ce68f" />
+<img width="1862" height="761" alt="image" src="https://github.com/user-attachments/assets/60595687-c077-4d48-9a95-fddb467a6cda" />
+<img width="1883" height="693" alt="image" src="https://github.com/user-attachments/assets/7059a021-56f3-47e5-b9ad-5f60c9f09b84" />
+<img width="1512" height="31" alt="image" src="https://github.com/user-attachments/assets/53d9db67-c3f0-41a1-bec0-20161990a26c" />
+<img width="1519" height="275" alt="image" src="https://github.com/user-attachments/assets/e0a72131-9639-4bef-af6d-1b3a95253684" />
+
+
+
+
