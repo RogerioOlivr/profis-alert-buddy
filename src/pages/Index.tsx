@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProfissionaisList from "@/components/ProfissionaisList";
 import ProfissionalForm from "@/components/ProfissionalForm";
+import ApiInfoPanel from "@/components/ApiInfoPanel";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Profissional = Tables<"profissionais">;
