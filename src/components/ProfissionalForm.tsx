@@ -75,7 +75,7 @@ const ProfissionalForm = ({ profissional, onBack, onSuccess }: Props) => {
           .eq("id", profissional.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from("profissionais").insert(values);
+        const { error } = await supabase.from("profissionais").insert([values]);
         if (error) throw error;
       }
     },
