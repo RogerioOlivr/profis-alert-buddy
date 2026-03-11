@@ -49,7 +49,7 @@ const ApiInfoPanel = () => {
           {endpoints.map((ep) => (
             <div key={ep.key} className="rounded-lg border bg-background p-3 space-y-1.5">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold text-green-600 bg-green-50 border border-green-200 px-1.5 py-0.5 rounded">
+                <span className="text-xs font-mono font-bold text-primary bg-accent border border-border px-1.5 py-0.5 rounded">
                   {ep.method}
                 </span>
                 <span className="text-sm font-medium text-foreground">{ep.label}</span>
