@@ -13,14 +13,44 @@ import { ArrowLeft, Save, User } from "lucide-react";
 
 type Profissional = Tables<"profissionais">;
 
-const schema = z.object({
-  nome_completo: z.string().trim().min(2, "Nome deve ter ao menos 2 caracteres").max(200),
-  email: z.string().trim().email("Email inválido"),
-  cargo: z.string().trim().min(2, "Cargo deve ter ao menos 2 caracteres").max(100),
-  data_inicio: z.string().min(1, "Data de início obrigatória"),
-  data_vencimento_contrato: z.string().min(1, "Data de vencimento obrigatória"),
-  email_responsavel: z.string().trim().email("Email do responsável inválido"),
-});
+const TEN_YEARS_AGO = new Date();
+TEN_YEARS_AGO.setFullYear(TEN_YEARS_AGO.getFullYear() - 10);
+
+const schema = z
+  .object({
+    nome_completo: z.string().trim().min(2, "Nome deve ter ao menos 2 caracteres").max(200),
+    email: z.string().trim().email("Email inválido"),
+    cargo: z.string().trim().min(2, "Cargo deve ter ao menos 2 caracteres").max(100),
+    data_inicio: z
+      .string()
+      .min(1, "Data de início obrigatória")
+      .refine((v) => {
+        const d = new Date(v);
+        return !isNaN(d.getTime()) && d >= TEN_YEARS_AGO;
+      }, "Data de início inválida."),
+    data_vencimento_contrato: z.string().min(1, "Data de vencimento obrigatória"),
+    email_responsavel: z.string().trim().email("Email do responsável inválido"),
+  })
+  .superRefine((data, ctx) => {
+    if (!data.data_inicio || !data.data_vencimento_contrato) return;
+    const inicio = new Date(data.data_inicio);
+    const vencimento = new Date(data.data_vencimento_contrato);
+    if (isNaN(inicio.getTime()) || isNaN(vencimento.getTime())) return;
+
+    if (vencimento < inicio) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "A data de vencimento do contrato deve ser posterior à data de início.",
+        path: ["data_vencimento_contrato"],
+      });
+    } else if (vencimento.getTime() === inicio.getTime()) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "O contrato deve ter duração mínima de 1 dia.",
+        path: ["data_vencimento_contrato"],
+      });
+    }
+  });
 
 type FormValues = {
   nome_completo: string;
