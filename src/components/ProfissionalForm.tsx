@@ -80,7 +80,7 @@ const ProfissionalForm = ({ profissional, onBack, onSuccess }: Props) => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["profissionais"] });
+      void queryClient.invalidateQueries({ queryKey: ["profissionais"] });
       toast({
         title: isEditing
           ? "Profissional atualizado com sucesso!"
