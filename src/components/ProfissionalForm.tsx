@@ -22,7 +22,14 @@ const schema = z.object({
   email_responsavel: z.string().trim().email("Email do responsável inválido"),
 });
 
-type FormValues = z.infer<typeof schema>;
+type FormValues = {
+  nome_completo: string;
+  email: string;
+  cargo: string;
+  data_inicio: string;
+  data_vencimento_contrato: string;
+  email_responsavel: string;
+};
 
 interface Props {
   profissional: Profissional | null;
