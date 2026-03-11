@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profissionais: {
+        Row: {
+          cargo: string
+          created_at: string
+          data_inicio: string
+          data_vencimento_contrato: string
+          email: string
+          email_responsavel: string
+          id: string
+          nome_completo: string
+          updated_at: string
+        }
+        Insert: {
+          cargo: string
+          created_at?: string
+          data_inicio: string
+          data_vencimento_contrato: string
+          email: string
+          email_responsavel: string
+          id?: string
+          nome_completo: string
+          updated_at?: string
+        }
+        Update: {
+          cargo?: string
+          created_at?: string
+          data_inicio?: string
+          data_vencimento_contrato?: string
+          email?: string
+          email_responsavel?: string
+          id?: string
+          nome_completo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
